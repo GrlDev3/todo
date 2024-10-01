@@ -1,5 +1,7 @@
 <?
 
+include "Task.php";
+
 $filePath = 'data/tasks.json';
 
 function readTasks(){
@@ -88,16 +90,6 @@ function handlePostRequest(){
     }
     $retval = createTask($input['title']);
 
-   /* $tasks = readTasks();
-    $newTask = [
-        'id' => count($tasks) > 0 ? $tasks[count($tasks) - 1]['id'] + 1 : 1,
-        'title' => $input['title'],
-        'created_at' => date('Y-m-d H:i:s')
-    ];
-
-    $tasks[] = $newTask;
-    writeTasks($tasks);*/
-
     http_response_code(201); // Created
     echo json_encode($retval);
 }
@@ -110,17 +102,6 @@ function handlePutRequest(){
         echo json_encode(['error' => 'Task ID and title are required']);
         return;
     }
-
-    /*$tasks = readTasks();
-    foreach ($tasks as &$task) {
-        if ($task['id'] == $input['id']) {
-            $task['title'] = $input['title'];
-            writeTasks($tasks);
-            http_response_code(200); // OK
-            echo json_encode($task);
-            return;
-        }
-    }*/
 
     $retval = updateTask($input['id'], $input['title']);
     if($retval == false)
@@ -144,16 +125,6 @@ function handleDeleteRequest(){
         return;
     }
 
-    /*
-    $tasks = readTasks();
-    foreach ($tasks as $index => $task) {
-        if ($task['id'] == $taskId) {
-            array_splice($tasks, $index, 1);
-            writeTasks($tasks);
-            
-            return;
-        }
-    }*/
     $retval = deleteTask($taskId);
 
     if($retval)
