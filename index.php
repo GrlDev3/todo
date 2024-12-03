@@ -6,8 +6,8 @@
     <title>To Do App</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!--link rel='stylesheet' type='text/css' media='screen' href='main.css'-->
-    <script type="javascript/text" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script type="javascript/text" src='../data/main.js'></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src='data/main.js'></script>
 </head>
 <body>
 <div id="task-list"></div>

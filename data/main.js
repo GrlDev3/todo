@@ -5,6 +5,7 @@ $(document).ready(function() {
             method: 'GET',
             success: function(tasks) {
                 $('#task-list').empty();
+                tasks = JSON.parse(tasks);
                 tasks.forEach(function(task) {
                     $('#task-list').append('<div>' +
                          task.title +
@@ -12,8 +13,8 @@ $(document).ready(function() {
                            task.id +
                             '">Delete</button>' +
                             //' <button class="update" data-id="' +
-                            // task.id + '">Update</button>'
-                             +'</div>');
+                            // task.id + '">Update</button>' +
+                    '</div>');
                 });
             }
         });
@@ -28,7 +29,9 @@ $(document).ready(function() {
             url: '../api/taskmanager.php',
             method: 'POST',
             data: { title: title },
+            data: JSON.stringify({title:title}),
             success: function() {
+                $('#task-title').val("");
                 loadTasks();
             }
         });
